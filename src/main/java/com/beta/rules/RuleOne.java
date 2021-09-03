@@ -1,6 +1,6 @@
-package com.beta.ruleService;
+package com.beta.rules;
 
-import com.beta.ruleService.IStringRule;
+import com.beta.rules.IStringRule;
 
 public class RuleOne implements IStringRule {
     @Override
@@ -11,12 +11,7 @@ public class RuleOne implements IStringRule {
     @Override
     public String processString(String word) {
         StringBuilder input1 = new StringBuilder();
-
-        // append a string into StringBuilder input1
         input1.append(word);
-
-        // reverse StringBuilder input1
         return input1.reverse().toString();
-
     }
 }

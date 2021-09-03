@@ -1,4 +1,6 @@
-package com.beta.ruleService;
+package com.beta.rules;
+
+import com.beta.rules.IStringRule;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

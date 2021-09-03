@@ -1,5 +1,8 @@
 package com.beta.ruleService;
 
+import com.beta.rules.IStringRule;
+import com.beta.rules.RuleOne;
+import com.beta.rules.RuleTwo;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collections;
