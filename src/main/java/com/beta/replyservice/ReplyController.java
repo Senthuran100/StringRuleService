@@ -26,7 +26,6 @@ public class ReplyController {
 	public ReplyMessage replying(@PathVariable String message) {
 		if(message.contains("-")){
 			System.out.println(ruleConfig.getStringRule());
-
 			return new ReplyMessage(ruleService.checkString(message));
 		} else {
 			return new ReplyMessage("Message should contain -");

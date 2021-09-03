@@ -1,5 +1,6 @@
 package com.beta.replyservice;
 
+import com.beta.ruleService.RuleConfig;
 import com.beta.ruleService.RulesValidatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,9 @@ public class RuleService {
     @Autowired
     private RulesValidatorService rulesValidatorService;
 
+    @Autowired
+    private RuleConfig ruleConfig;
+
     public String processedString;
 
     public String checkString(String message){
@@ -19,12 +23,16 @@ public class RuleService {
         processedString = partTwoString;
         for (int i = 0; i < partOneString.length(); i++){
             char c = partOneString.charAt(i);
-            processedString = rulesValidatorService.validateStringRule(Character.toString(c),processedString);
+            if(checkRuleNumberExsist(Character.toString(c))) {
+                processedString = rulesValidatorService.validateStringRule(Character.toString(c), processedString);
+            } else {
+                return RuleConfig.ruleNotValid;
+            }
         }
         return processedString;
     }
 
-//    public boolean checkRuleNumberExsist(string rule){
-//
-//    }
+    private boolean checkRuleNumberExsist(String rule){
+        return ruleConfig.getStringRule().containsKey(rule);
+    }
 }

@@ -8,14 +8,14 @@ import java.util.Map;
 @Component
 @ConfigurationProperties(prefix = "rule")
 public class RuleConfig {
+    public static String ruleNotValid = "RULE IS NOT VALID";
+    private Map<String, String> stringRule;
 
-    private Map<Integer, String> stringRule;
-
-    public Map<Integer, String> getStringRule() {
+    public Map<String, String> getStringRule() {
         return stringRule;
     }
 
-    public void setStringRule(Map<Integer, String> stringRule) {
+    public void setStringRule(Map<String, String> stringRule) {
         this.stringRule = stringRule;
     }
 }
