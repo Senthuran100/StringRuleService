@@ -18,8 +18,7 @@ public class RuleTwo implements IStringRule {
         return getMd5(word);
     }
 
-    private  String getMd5(String input)
-    {
+    private String getMd5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
@@ -32,9 +31,7 @@ public class RuleTwo implements IStringRule {
                 hashtext = "0" + hashtext;
             }
             return hashtext;
-        }
-
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }

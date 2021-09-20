@@ -4,6 +4,7 @@ import com.beta.rules.IStringRule;
 import com.beta.rules.RuleOne;
 import com.beta.rules.RuleTwo;
 import org.springframework.stereotype.Service;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -12,17 +13,17 @@ import java.util.List;
 public class RulesValidatorService {
     private final List<IStringRule> rules;
 
-    public RulesValidatorService(){
+    public RulesValidatorService() {
         rules = Collections.unmodifiableList(Arrays.asList(new RuleOne(), new RuleTwo()));
     }
 
-    public  String validateStringRule(String number, String message){
-        if (number.isEmpty()){
+    public String validateStringRule(String number, String message) {
+        if (number.isEmpty()) {
             return "Rule Number cannot be empty";
         }
 
-        for ( IStringRule rule : rules){
-            if(rule.shouldApplyRule(number)){
+        for (IStringRule rule : rules) {
+            if (rule.shouldApplyRule(number)) {
                 return rule.processString(message);
             }
         }

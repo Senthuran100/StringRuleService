@@ -11,31 +11,30 @@ import java.util.Map;
 @RestController
 public class ReplyController {
 
-	@Autowired
-	private RuleService ruleService;
+    @Autowired
+    private RuleService ruleService;
 
-	@Autowired
-	private RuleConfig ruleConfig;
+    @Autowired
+    private RuleConfig ruleConfig;
 
-	@GetMapping("/reply")
-	public ReplyMessage replying() {
-		return new ReplyMessage("Message is empty");
-	}
+    @GetMapping("/reply")
+    public ReplyMessage replying() {
+        return new ReplyMessage("Message is empty");
+    }
 
-	@GetMapping("/reply/{message}")
-	public ReplyMessage replying(@PathVariable String message) {
-		if(message.contains("-")){
-			System.out.println(ruleConfig.getStringRule());
-			return new ReplyMessage(ruleService.checkString(message));
-		} else {
-			return new ReplyMessage("Message should contain -");
-		}
-	}
+    @GetMapping("/reply/{message}")
+    public ReplyMessage replying(@PathVariable String message) {
+        if (message.contains("-")) {
+            return new ReplyMessage(ruleService.checkString(message));
+        } else {
+            return new ReplyMessage("Message should contain -");
+        }
+    }
 
-	@GetMapping("/dynamic-Rule")
-	public Map stringRules(){
-		return ruleConfig.getStringRule();
-	}
+    @GetMapping("/dynamic-Rule")
+    public Map stringRules() {
+        return ruleConfig.getStringRule();
+    }
 
 
 }
